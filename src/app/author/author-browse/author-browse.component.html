@@ -1,0 +1,98 @@
+<div [hidden]="!isVisible">
+  <div class="filter">
+    <mat-form-field>
+      <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filter">
+    </mat-form-field>
+  </div>
+  
+  <div class="action-bar">
+    <button mat-flat-button class="action-bar-button" (click)="createAuthor()">
+      <mat-icon>add</mat-icon>
+      Create
+    </button>
+    <button mat-flat-button class="action-bar-button" (click)="refresh()">
+      <mat-icon>refresh</mat-icon>
+      Refresh
+    </button>
+  </div>
+
+  <div class="table">
+    <table mat-table [dataSource]="authorTable">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Id </th>
+        <td mat-cell *matCellDef="let author"> {{author.id}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> First Name </th>
+        <td mat-cell *matCellDef="let author"> {{author.firstName}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Last Name </th>
+        <td mat-cell *matCellDef="let author"> {{author.lastName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="famousBooks">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Famous Books </th>
+        <td mat-cell *matCellDef="let author"> {{author.famousBooks}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Country </th>
+        <td mat-cell *matCellDef="let author"> {{author.country}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="dateOfBirth">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Date Of Birth </th>
+        <td mat-cell *matCellDef="let author"> {{author.dateOfBirth | date: 'dd-MM-yyyy' }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="numberOfBooksPublished">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Books published </th>
+        <td mat-cell *matCellDef="let author"> {{author.numberOfBooksPublished}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rating">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Rating </th>
+        <td mat-cell *matCellDef="let author"> {{author.rating}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="genres">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Genres </th>
+        <td mat-cell *matCellDef="let author"> {{author.genres}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="viewImage">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> View Image </th>
+        <td mat-cell *matCellDef="let author">
+          <button mat-button (click)="viewImage(author)">
+            <mat-icon>insert_photo</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Edit </th>
+        <td mat-cell *matCellDef="let author">
+          <button mat-button (click)="edit(author)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef class="header-cell"> Delete </th>
+        <td mat-cell *matCellDef="let author">
+          <button mat-button (click)="delete(author)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+
+<mat-sidenav-container>
+    <mat-sidenav [(opened)]="isSideNavOpen">
+        <mat-grid-list cols="1" rows="3" rowHeight="3em">
+            <mat-grid-tile>
+                <button mat-flat-button class="sub-side-menu" (click)="addComponentTab('Author Browse')">
+                    <mat-icon>people</mat-icon>Authors
+                </button>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <button mat-flat-button class="sub-side-menu">
+                    <mat-icon>menu_book</mat-icon>Books
+                </button>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <button mat-flat-button class="sub-side-menu" (click)="addComponentTab('Account')">
+                    <mat-icon>account_box</mat-icon>Account
+                </button>
+            </mat-grid-tile>            
+        </mat-grid-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div class="main">
+            <mat-toolbar class="sub-menu">
+                <button mat-icon-button (click)="isSideNavOpen = !isSideNavOpen">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <ul style="list-style-type:none;">
+                    <li *ngFor="let tab of componentTabs">
+                        <button mat-flat-button *ngIf="!tab.isVisible" class="tab-unselect" (click)="selectTab(tab)" >
+                            {{ tab.name }}<mat-icon (click)="close(tab)" class="close-icon">close</mat-icon>
+                        </button>
+                        <button mat-flat-button *ngIf="tab.isVisible" class="tab-select" (click)="selectTab(tab)">
+                            {{ tab.name }}<mat-icon (click)="close(tab)" class="close-icon">close</mat-icon>
+                        </button>
+                    </li>
+                </ul>
+            </mat-toolbar>
+
+            <div class="contaier">
+                <div #container>
+
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+    
+</mat-sidenav-container>

@@ -1,0 +1,42 @@
+<div [hidden]="!isVisible">
+
+  <div class="action-bar">
+    <button mat-flat-button class="action-bar-button" (click)="editUser()">
+      <mat-icon>edit</mat-icon>
+      Edit
+    </button>
+  </div>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="field">
+          Personal Info
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <table>
+        <tr *ngFor="let personalInfo of personalDetails">
+            <td class="field">{{ personalInfo.name }}</td>
+            <td>{{ personalInfo.value }}</td>
+        </tr>
+      </table>
+      <br>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="field">
+            Login Info
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <table>
+        <tr *ngFor="let loginInfo of loginDetails">
+            <td class="field">{{ loginInfo.name }}</td>
+            <td>{{ loginInfo.value }}</td>
+        </tr>
+      </table>
+      <br>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

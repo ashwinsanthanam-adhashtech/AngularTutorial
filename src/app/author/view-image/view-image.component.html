@@ -1,0 +1,11 @@
+<img src="{{image}}" alt="Red dot" *ngIf="success">
+<div *ngIf="!success">
+    <mat-dialog-content>{{ message }}</mat-dialog-content>
+</div>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>OK</button>
+</mat-dialog-actions>
+
+<!-- <image src="{{data.imageSrc}}" alt="Red dot"></image> -->
+
+<!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot"> -->

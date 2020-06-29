@@ -1,0 +1,63 @@
+.heading {
+    font-size: 2em;
+    margin-top: 0.5em;
+}
+
+mat-icon {
+    font-size: 3em;
+    color:#E11E49;
+}
+
+.icon {
+    width: 3em;
+    height: 3em;
+}
+
+.app-header {
+    padding-left: 3em;
+    background-color: white;
+}
+
+.header-menu {
+    margin-right: 1em;
+}
+
+.main-table {
+    width: 99%;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.search-bar-input {
+    width: 10em;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    font-size: 1em;
+    margin-right: 0.25em;
+    vertical-align: middle;
+}
+
+.search-bar button {
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+.search-bar-icon {
+    color: #E11E49;
+    font-size: 1.5em;
+}
+
+.logout-icon {
+    font-size: 2em;
+}
+
+.account-icon {
+    font-size: 2em;
+}
+
+.app-menu {
+    width: 15em;
+}

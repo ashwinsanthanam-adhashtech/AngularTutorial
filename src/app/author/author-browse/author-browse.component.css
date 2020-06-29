@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+}
+
+.action-bar {
+    height: auto;
+    width: 100%;
+    padding: 1em;
+}
+
+.action-bar-button {
+    margin-right: 1em;
+    background-color: #E11E49;
+    color: white;
+}
+
+.header-cell {
+    background-color: white;
+    color: #E11E49;
+    font-size: 1.15em;
+}

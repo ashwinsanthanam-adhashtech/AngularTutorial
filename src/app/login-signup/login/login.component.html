@@ -1,0 +1,18 @@
+<div>
+    <mat-form-field>
+        <mat-label class="{{ loginContainer.loginNameValidityClass }}">Login Name</mat-label>
+        <input matInput type="text" [(ngModel)]="loginContainer.loginName">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+        <mat-label class="{{ loginContainer.passwordValidityClass }}">Password</mat-label>
+        <input matInput type="password" [(ngModel)]="loginContainer.password">
+    </mat-form-field>
+    <br>
+
+    <button mat-raised-button (click)="login()">Login</button>
+    <br>
+    
+    <mat-label>{{ loginContainer.resultMessage }}</mat-label>
+</div>

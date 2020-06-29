@@ -1,0 +1,39 @@
+table {
+    width: auto;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+tr {
+    height: 2em;
+}
+
+td {
+    border: 1px solid #dddddd;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.field {
+    color: darkblue;
+}
+
+button {
+    color: darkblue;
+}
+
+.action-bar {
+    height: auto;
+    width: 100%;
+    padding: 1em;
+}
+
+.action-bar-button {
+    margin-right: 1em;
+    background-color: #E11E49;
+    color: white;
+}
+
+.action-bar-button mat-icon {
+    font-size: 1.5em;
+}

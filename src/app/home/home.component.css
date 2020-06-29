@@ -1,0 +1,67 @@
+mat-sidenav-container {
+    height: 94%;
+}
+
+mat-sidenav {
+    background-color: #dddddd;
+    width: 10em;
+}
+
+.sub-menu {
+    background-color: #E11E49;
+    height: 2em;
+    color: white;
+}
+
+mat-grid-tile {
+    color: white;
+    font-size: 1.25em;
+    text-align: center;
+    /* border: 1px solid turquoise; */
+}
+
+mat-icon {
+    vertical-align: middle;
+}
+
+.sub-side-menu mat-icon{
+    margin-right: 0.5em;
+}
+
+.sub-side-menu {
+    vertical-align: text-bottom;
+    background-color: #dddddd;
+    width: 100%;
+}
+
+.tab-select {
+    background-color:white;
+    height: 2.9em;
+    width: auto;;
+}
+
+.tab-select mat-icon {
+    color: #E11E49;
+    font-weight: bold;
+}
+
+.tab-unselect {
+    background-color: #E11E49;
+    color: white;
+    height: 2.9em;
+    width: auto;
+}
+
+li {
+    float: left;
+}
+
+.close-icon {
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    font-size: 1em;
+}
+
+.contaier {
+    margin: 1em;
+}
