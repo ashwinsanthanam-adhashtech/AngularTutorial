@@ -4,6 +4,7 @@ import { TabComponentService } from '../shared/services/tab-component.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { BrowserStorageService } from '../shared/services/browser-storage.service';
 import { ForcePasswordResetComponent } from './force-password-reset/force-password-reset.component';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +16,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   isSideNavOpen: boolean = false;
   @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
 
-  constructor(private _tabComponentService: TabComponentService, private _dialog: MatDialog, private _browserStorage: BrowserStorageService) { }
+  constructor(private _tabComponentService: TabComponentService, private _dialog: MatDialog, private _browserStorage: BrowserStorageService, private _authService: AuthService) { }
   ngAfterViewInit(): void {
     console.log('init ');
     console.log(this.container);
     this._tabComponentService.initContainer(this.container);
+    this._tabComponentService.addComponentTab('Account');
     
     if(this._browserStorage.getOAuthSignupStatus()) {
       this._dialog.open(ForcePasswordResetComponent, { disableClose: true });
@@ -28,6 +30,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   
   ngOnInit(): void {
     
+  }
+
+  get isAdmin(): boolean {
+    return this._authService.isAdmin;
   }
 
   get componentTabs(): ComponentTab[] {

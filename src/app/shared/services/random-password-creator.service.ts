@@ -38,7 +38,7 @@ export class RandomPasswordCreatorService {
   //   const len: number = this._smallLettersRange.randomNumber;
   //   const smallLetters = new Range('a'.charCodeAt(0), 'z'.charCodeAt(0));
   //   for(var i = 0; i < len; i++) {
-  //     return 
+  //     const character: string = smallLetters.randomNumber;
   //   }
   // }
 

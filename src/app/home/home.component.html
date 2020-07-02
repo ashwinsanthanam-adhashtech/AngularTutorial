@@ -7,9 +7,9 @@
                     <mat-icon>people</mat-icon>Authors
                 </button>
             </mat-grid-tile>
-            <mat-grid-tile>
-                <button mat-flat-button class="sub-side-menu">
-                    <mat-icon>menu_book</mat-icon>Books
+            <mat-grid-tile *ngIf="isAdmin">
+                <button mat-flat-button class="sub-side-menu" (click)="addComponentTab('Create Book')">
+                    <mat-icon>menu_book</mat-icon>Create Book
                 </button>
             </mat-grid-tile>
             <mat-grid-tile>

@@ -40,6 +40,7 @@ export class SignupComponent implements OnInit {
       {
         this._matIconRegistry.addSvgIcon('google', this._domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/icons/google.svg'));
         this._matIconRegistry.addSvgIcon('facebook', this._domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/icons/facebook.svg'));
+        
         this._socialAuth.authState.subscribe((socialUser: SocialUser) => this.oAuthSubscribe(socialUser));
       }
 
