@@ -4,6 +4,8 @@ import { HomeService } from 'src/app/shared/services/home.service';
 import { User } from 'src/app/shared/models/User.model';
 import { GenericResponse } from 'src/app/shared/models/GenericResponse.model';
 import { TabComponentService } from 'src/app/shared/services/tab-component.service';
+import { BrowserStorageService } from 'src/app/shared/services/browser-storage.service';
+
 
 @Component({
   selector: 'app-user-info',
@@ -17,7 +19,9 @@ export class UserInfoComponent implements OnInit {
   @Input() isVisible: boolean = true;
   private user: User;
   
-  constructor(private _homeService: HomeService, private _tabs: TabComponentService) { }
+  constructor(private _homeService: HomeService, private _tabs: TabComponentService) { 
+    
+  }
 
   ngOnInit(): void {
     this._homeService.fetchUserInfo().subscribe(response => this.fetchUserSubscribe(new GenericResponse(response)));

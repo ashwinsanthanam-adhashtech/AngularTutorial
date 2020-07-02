@@ -7,6 +7,7 @@ import { Author } from '../models/Author.model';
 import { SignupComponent } from 'src/app/login-signup/signup/signup.component';
 import { User } from '../models/User.model';
 import { CreateBookComponent } from 'src/app/book/create-book/create-book.component';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +16,30 @@ export class TabComponentService {
 
   componentTabs: ComponentTab[] = [];
   private _container: ViewContainerRef;
-  searchBarAllowedForms: string[] = [
-    'Account',
-    'Author Browse',
-    'Create Author',
-    'Create Book'
-  ];
   
-  constructor(private _resolver: ComponentFactoryResolver) { }
+  constructor(private _resolver: ComponentFactoryResolver, private _authService: AuthService) {
+
+  }
+
+  get searchBarAllowedForms(): string[] {
+    if(this._authService.isAdmin) {
+      return [
+        'Account',
+        'Edit Account',
+        'Author Browse',
+        'Create Author',
+        'Create Book'
+      ];
+    }
+    else {
+      return [
+        'Account',
+        'Edit Account',
+        'Author Browse',
+        'Create Author'
+      ];
+    }
+  }
 
   initContainer(container: ViewContainerRef) : void {
     this._container = container;
@@ -49,6 +66,9 @@ export class TabComponentService {
   }
 
   addComponentTab(componentName: string, param?: any): void {
+    if(this.searchBarAllowedForms.indexOf(componentName) == -1) {
+      return;
+    }
     const componentTab = new ComponentTab();
     componentTab.component = this.getComponent(componentName, param);
     componentTab.name = componentName;
@@ -93,7 +113,7 @@ export class TabComponentService {
         return editAccountComponent;
       case 'Create Book':
         let createBookFactory = this._resolver.resolveComponentFactory(CreateBookComponent);
-        return  this._container.createComponent(createBookFactory).instance;
+        return this._container.createComponent(createBookFactory).instance;
     }
   }
 }

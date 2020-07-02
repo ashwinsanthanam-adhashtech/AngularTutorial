@@ -25,7 +25,6 @@ export class AppComponent {
   logoutUser(): void {
     if(this._authService.isLoggedIn()) {
       this._authService.logout();
-      this._browserStorage.clear();
       this._router.navigate(['/login-signup']);
     }
   }

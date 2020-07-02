@@ -16,7 +16,12 @@ export class LoginComponent implements OnInit {
   private static _valid: string = 'valid';
   private static _invalid: string = 'invalid';
 
-  constructor(private _loginService: LoginService, private _browserStorage: BrowserStorageService, private _router: Router) { }
+  constructor(
+    private _loginService: LoginService, 
+    private _browserStorage: BrowserStorageService, 
+    private _router: Router) { 
+
+    }
 
   ngOnInit(): void {
     this.loginContainer = new LoginContainer();
@@ -26,19 +31,10 @@ export class LoginComponent implements OnInit {
     this.loginContainer.hitSubmit();
     if(this.loginContainer.isValid)
     {
-      this._loginService.login(this.loginContainer).subscribe(response => this.loginSubscriber(new GenericResponse(response)));
+      this._loginService.login(this.loginContainer).
+      subscribe(response => this.loginContainer.resultMessage = this._loginService.loginSubscriber(new GenericResponse(response), <string>this.loginContainer.loginName));
     }
   }
 
-  private loginSubscriber(response: GenericResponse) {
-    console.log(response);
-    if(response.isSuccess) {
-      this._browserStorage.setToken(response.payload);
-      this._browserStorage.setUserName(<string>this.loginContainer.loginName);
-      this._router.navigate(['/home']);
-    }
-    else{
-      this.loginContainer.resultMessage = response.message;
-    }
-  }
+
 }

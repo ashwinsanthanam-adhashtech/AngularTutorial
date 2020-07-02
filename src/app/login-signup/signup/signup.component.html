@@ -58,4 +58,15 @@
         <br>
         <span class="error">{{ resultMessage }}</span>
     </form>
+    <br>
+    <div *ngIf="isSignup">
+        <button mat-raised-button (click)="signupWithGoogle()">
+            <mat-icon svgIcon="google"></mat-icon>
+            Signup with Google
+        </button>
+        <button mat-raised-button (click)="signupWithFacebook()">
+            <mat-icon svgIcon="facebook"></mat-icon>
+            Signup with Facebook
+        </button>
+    </div>
 </div>

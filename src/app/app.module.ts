@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +25,22 @@ import { AuthorModule } from './author/author.module';
 import { BookModule } from './book/book.module';
 import { SignupDialogComponent } from './login-signup/signup/signup-dialog/signup-dialog.component';
 import { EditUserComponent } from './home/edit-user/edit-user.component';
+import { ForcePasswordResetComponent } from './home/force-password-reset/force-password-reset.component';
+
+const googleOAuthClientId: string = '1012967069498-auq9gbl6rigsku6eq4tms67oqud1seo0.apps.googleusercontent.com';
+const facebookOauthAppId: string = '279105980208522';
+
+let config: SocialAuthServiceConfig = {
+  providers: [
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider(googleOAuthClientId)
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider(facebookOauthAppId)
+  }]
+};
 
 @NgModule({
   declarations: [
@@ -33,7 +51,8 @@ import { EditUserComponent } from './home/edit-user/edit-user.component';
     HomeComponent,
     UserInfoComponent,
     SignupDialogComponent,
-    EditUserComponent
+    EditUserComponent,
+    ForcePasswordResetComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +63,8 @@ import { EditUserComponent } from './home/edit-user/edit-user.component';
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
+    SocialLoginModule.initialize(config),
+    OAuthModule.forRoot(),
     AuthorModule,
     BookModule
   ],

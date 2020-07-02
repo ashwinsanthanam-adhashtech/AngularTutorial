@@ -11,5 +11,5 @@ export class GenericResponse {
 
     get isSuccess(): boolean {
         return this.message == 'Success';
-    } 
+    }
 }
